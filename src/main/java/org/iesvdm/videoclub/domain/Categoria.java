@@ -3,10 +3,8 @@ package org.iesvdm.videoclub.domain;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.NaturalId;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -18,6 +16,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EqualsAndHashCode(of = "nombre")
 public class Categoria {
 
     @Id
@@ -35,5 +34,7 @@ public class Categoria {
     @JsonFormat(pattern = "yyyy-MM-dd-HH:mm:ss",  shape = JsonFormat.Shape.STRING)
     private Date ultimaActualizacion;
 
-
+    public Long getIdCategoria() {
+        return id;
+    }
 }
