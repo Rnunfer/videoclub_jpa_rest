@@ -43,14 +43,14 @@ export class CategoriaService {
   }
 
   update(id: number, categoria: Categoria): Observable<Categoria> {
-    return this.httpClient.put<Categoria>(this.apiURL + id, JSON.stringify(categoria), this.httpOptions)
+    return this.httpClient.put<Categoria>(this.apiURL + "/" + id, JSON.stringify(categoria), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
   }
 
   delete(id: number){
-    return this.httpClient.delete<Categoria>(this.apiURL + id, this.httpOptions)
+    return this.httpClient.delete<Categoria>(this.apiURL + "/" + id, this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
