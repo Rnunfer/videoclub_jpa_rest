@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {CategoriaModule} from "./categoria/categoria.module";
 import {HttpClientModule} from "@angular/common/http";
+import {SharedModule} from "./shared/shared.module";
+import { HeaderComponent } from './shared/header/header.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import {HttpClientModule} from "@angular/common/http";
     AppRoutingModule,
     CategoriaModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    SharedModule
   ],
   //providers: [],
   bootstrap: [AppComponent]

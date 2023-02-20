@@ -39,7 +39,7 @@ export class EditComponent implements OnInit {
   }
 
   submit(){
-    console.log(this.form.value);
+    console.log(this.id + " " + this.form.value);
     this.categoriaService.update(this.id, this.form.value).subscribe(res => {
       console.log('Categroría actualizada satisfactoriamente!');
       this.router.navigateByUrl('categoria/index').then();

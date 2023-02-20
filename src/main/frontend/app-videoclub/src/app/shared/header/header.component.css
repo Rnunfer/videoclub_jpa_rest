@@ -1,0 +1,26 @@
+header {
+  border-bottom: 1px solid black;
+  padding: 10px 0px;
+}
+header .contenedor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+header .contenedor img {
+  width: 150px;
+  cursor: pointer;
+}
+header .contenedor div button {
+  margin-left: 10px;
+}/*# sourceMappingURL=header.component.css.map */
