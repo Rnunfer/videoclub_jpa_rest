@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CategoriaService} from "../categoria.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Categoria} from "../categoria";
@@ -13,14 +13,15 @@ export class EditComponent implements OnInit {
 
   id: number = 0;
   categoria: Categoria = { id: 0, nombre: "VOID", ultimaActualizacion: "1970-01-01"};
-  form: FormGroup =   new FormGroup({
-    categoria:  new FormControl('', [ Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+') ])
+  form: FormGroup =   this.fb.group({
+    nombre:  new FormControl('', [ Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+') ])
   });
 
   constructor(
     public categoriaService: CategoriaService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
@@ -30,20 +31,20 @@ export class EditComponent implements OnInit {
 
       this.form.get('nombre')?.setValue(this.categoria.nombre);
 
-
     });
   }
 
-  get f(){
-    return this.form.controls;
-  }
-
   submit(){
-    console.log(this.id + " " + this.form.value);
-    this.categoriaService.update(this.id, this.form.value).subscribe(res => {
-      console.log('Categroría actualizada satisfactoriamente!');
-      this.router.navigateByUrl('categoria/index').then();
+    if (this.form.valid) {
+      this.categoria.nombre = this.form.value.nombre;
+      this.categoriaService.update(this.id, this.categoria).subscribe(res => {
+        console.log('Categroría actualizada satisfactoriamente!');
+        this.router.navigateByUrl('categoria/index').then();
+        }, err => {
+        console.log(" ERROR ")
     })
+    }
+    
   }
 
 }

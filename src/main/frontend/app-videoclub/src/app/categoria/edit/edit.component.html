@@ -12,16 +12,10 @@
     <div class="form-group row">
       <div class="col-md-6 ">
         <label for="nombre">Nombre:</label>
-        <input
-          formControlName="categoria"
-          id="nombre"
-          type="text"
-          class="form-control"
-          value="{{categoria.nombre}}"
-        >
-        <div *ngIf="f.categoria.touched && f.categoria.invalid" class="alert alert-danger">
-          <div *ngIf="f.categoria.errors.required">*Nombre es requerido.</div>
-          <div *ngIf="f.categoria.errors.pattern">*El nombre sólo puede contener letras.</div>
+        <input formControlName="nombre" id="nombre" type="text" class="form-control" value="{{categoria.nombre}}">
+        <div *ngIf="form.controls['nombre'].touched && form.controls['nombre'].invalid" class="alert alert-danger">
+          <div *ngIf="form.controls['nombre'].errors.required">*Nombre es requerido.</div>
+          <div *ngIf="form.controls['nombre'].errors.pattern">*El nombre sólo puede contener letras.</div>
         </div>
       </div>
     </div>

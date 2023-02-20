@@ -8,6 +8,7 @@ import {CategoriaModule} from "./categoria/categoria.module";
 import {HttpClientModule} from "@angular/common/http";
 import {SharedModule} from "./shared/shared.module";
 import { HeaderComponent } from './shared/header/header.component';
+import { PeliculaModule } from './pelicula/pelicula.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HeaderComponent } from './shared/header/header.component';
     CategoriaModule,
     HttpClientModule,
     NgbModule,
-    SharedModule
+    SharedModule,
+    PeliculaModule
   ],
   //providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,75 @@
+<div>
+
+    <div class="d-flex justify-content-between">
+      <h4>Película</h4>
+      <a href="#" routerLink="/pelicula/index" class="btn">Volver</a>
+    </div>
+  
+    <hr/>
+  
+    <form [formGroup]="form" (ngSubmit)="submit()">
+  
+      <div class="form-group row">
+        <div class="col-md-6 ">
+          <div>
+            <label for="titulo">Título:</label>
+            <input formControlName="titulo" id="titulo" type="text" class="form-control">
+          </div>
+          
+          <div>
+            <label for="anyo_lanzamiento">Año de lanzamiento:</label>
+            <input formControlName="titulo" id="titulo" type="number" class="form-control">
+          </div>
+
+          <div>
+            <label for="caracteristicas_especiales">Características especiales:</label>
+            <input formControlName="caracteristicas_especiales" id="caracteristicas_especiales" type="text" class="form-control">
+          </div>
+
+          <div>
+            <label for="clasificacion">Clasificación:</label>
+            <input formControlName="clasificacion" id="clasificacion" type="text" class="form-control">
+          </div>
+
+          <div>
+            <label for="descripcion">Descripción:</label>
+            <textarea formControlName="descripcion" id="descripcion" class="form-control"></textarea>
+          </div>
+
+          <div>
+            <label for="duracion">Duración (min):</label>
+            <input formControlName="duracion" id="duracion" type="number" class="form-control">
+          </div>
+
+          <div>
+            <label for="duracion_alquiler">Duración del alquiler (días):</label>
+            <input formControlName="duracion_alquiler" id="duracion_alquiler" type="number" class="form-control">
+          </div>
+
+          <div>
+            <label for="rental_rate">Tarifa de alquiler:</label>
+            <input formControlName="rental_rate" id="rental_rate" type="number" class="form-control">
+          </div>
+
+          <div>
+            <label for="replacement_cost">Costo de reemplazo:</label>
+            <input formControlName="replacement_cost" id="replacement_cost" type="number" class="form-control">
+          </div>
+
+          <div>
+            <label for="id_idioma">ID de idioma:</label>
+            <input formControlName="id_idioma" id="id_idioma" type="number" class="form-control">
+          </div>
+
+          <div>
+            <label for="id_idioma_original">ID de idioma original:</label>
+            <input formControlName="id_idioma_original" id="id_idioma_original" type="number" class="form-control">
+          </div>
+
+        </div>
+      </div>
+  
+      <button class="btn btn-primary mt-1" type="submit" [disabled]="!form.valid">Enviar</button>
+    </form>
+  </div>
+  
