@@ -5,7 +5,9 @@ import org.iesvdm.videoclub.exception.CategoriaNotFoundException;
 import org.iesvdm.videoclub.repository.CategoriaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoriaService {
@@ -18,6 +20,23 @@ public class CategoriaService {
 
     public List<Categoria> all() {
         return this.categoriaRepository.findAll();
+    }
+
+    public List<Categoria> allFiltro(Optional<String> buscarOptional, Optional<String> ordenarOptional) {
+
+        List<Categoria> listaCategorias = new ArrayList<>();
+        if(buscarOptional.isPresent() && ordenarOptional.isEmpty()) {
+            listaCategorias = this.categoriaRepository.findByNombreContainingIgnoreCase(buscarOptional.get());
+        } else if (buscarOptional.isPresent() && ordenarOptional.isPresent() && ordenarOptional.equals("asc")) {
+            listaCategorias = this.categoriaRepository.findByNombreContainingIgnoreCaseOrderByNombreAsc(buscarOptional.get());
+        } else if (buscarOptional.isPresent() && ordenarOptional.isPresent() && ordenarOptional.equals("desc")) {
+            listaCategorias = this.categoriaRepository.findByNombreContainingIgnoreCaseOrderByNombreDesc(buscarOptional.get());
+        } else if (buscarOptional.isEmpty() && ordenarOptional.isPresent() && ordenarOptional.equals("asc")) {
+            listaCategorias = this.categoriaRepository.findAllOrderByNombreAsc();
+        } else if (buscarOptional.isEmpty() && ordenarOptional.isPresent() && ordenarOptional.equals("desc")) {
+            listaCategorias = this.categoriaRepository.findAllOrderByNombreDesc();
+        }
+        return listaCategorias;
     }
 
     public Categoria save(Categoria categoria) {

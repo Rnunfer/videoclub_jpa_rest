@@ -19,7 +19,7 @@ export interface Pelicula {
   replacement_cost: number;
 
   titulo: string;
-  
+
   id_idioma: number;
 
   id_idioma_original: number;

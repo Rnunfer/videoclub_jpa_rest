@@ -4,21 +4,21 @@
       <h4>Película</h4>
       <a href="#" routerLink="/pelicula/index" class="btn">Volver</a>
     </div>
-  
+
     <hr/>
-  
+
     <form [formGroup]="form" (ngSubmit)="submit()">
-  
+
       <div class="form-group row">
         <div class="col-md-6 ">
           <div>
             <label for="titulo">Título:</label>
             <input formControlName="titulo" id="titulo" type="text" class="form-control">
           </div>
-          
+
           <div>
             <label for="anyo_lanzamiento">Año de lanzamiento:</label>
-            <input formControlName="titulo" id="titulo" type="number" class="form-control">
+            <input formControlName="anyo_lanzamiento" id="anyo_lanzamiento" type="number" class="form-control">
           </div>
 
           <div>
@@ -68,8 +68,7 @@
 
         </div>
       </div>
-  
+
       <button class="btn btn-primary mt-1" type="submit" [disabled]="!form.valid">Enviar</button>
     </form>
   </div>
-  

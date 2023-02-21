@@ -27,6 +27,7 @@ public class PeliculaController {
 
     @PostMapping({"","/"})
     public Pelicula newPelicula(@RequestBody Pelicula pelicula) {
+        System.out.println("1");
         return this.peliculaService.save(pelicula);
     }
 

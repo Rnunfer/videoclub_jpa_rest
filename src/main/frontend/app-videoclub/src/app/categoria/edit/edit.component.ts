@@ -12,7 +12,7 @@ import {Categoria} from "../categoria";
 export class EditComponent implements OnInit {
 
   id: number = 0;
-  categoria: Categoria = { id: 0, nombre: "VOID", ultimaActualizacion: "1970-01-01"};
+  categoria: Categoria = { id: 0, nombre: "", ultimaActualizacion: "1970-01-01"};
   form: FormGroup =   this.fb.group({
     nombre:  new FormControl('', [ Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+') ])
   });
@@ -29,7 +29,7 @@ export class EditComponent implements OnInit {
     this.categoriaService.find(this.id).subscribe((data: Categoria)=>{
       this.categoria = data;
 
-      this.form.get('nombre')?.setValue(this.categoria.nombre);
+      this.form.controls['nombre']?.setValue(this.categoria.nombre);
 
     });
   }
@@ -37,14 +37,12 @@ export class EditComponent implements OnInit {
   submit(){
     if (this.form.valid) {
       this.categoria.nombre = this.form.value.nombre;
-      this.categoriaService.update(this.id, this.categoria).subscribe(res => {
-        console.log('Categroría actualizada satisfactoriamente!');
-        this.router.navigateByUrl('categoria/index').then();
-        }, err => {
-        console.log(" ERROR ")
-    })
+      this.categoriaService.update(this.id, this.categoria).subscribe(
+        res => { console.log('Categroría actualizada satisfactoriamente!'); },
+        err => { console.log(" ERROR, no se puedo editar la categoría id=" + this.id); })
     }
-    
+    this.router.navigateByUrl('categoria/index').then();
+
   }
 
 }
