@@ -44,7 +44,7 @@ public class CategoriaController {
     }
 
     @GetMapping("/conteo")
-    public List<Categoria> conteo() {
+    public List<Integer> conteo() {
         return this.categoriaService.conteo();
     }
 

@@ -64,7 +64,7 @@ public class CategoriaService {
                 .orElseThrow(() -> new CategoriaNotFoundException(id));
     }
 
-    public List<Categoria> conteo() {
-        return this.categoriaRepository.findAll();
+    public List<Integer> conteo() {
+        return this.categoriaRepository.queryCategoriaConteoPeliculas();
     }
 }
