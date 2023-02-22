@@ -16,7 +16,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@EqualsAndHashCode(of = "nombre")
+@EqualsAndHashCode(of = "id")
 public class Categoria {
 
     @Id
