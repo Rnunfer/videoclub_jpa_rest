@@ -27,14 +27,16 @@ public class CategoriaService {
         List<Categoria> listaCategorias = new ArrayList<>();
         if(buscarOptional.isPresent() && ordenarOptional.isEmpty()) {
             listaCategorias = this.categoriaRepository.findByNombreContainingIgnoreCase(buscarOptional.get());
-        } else if (buscarOptional.isPresent() && ordenarOptional.isPresent() && ordenarOptional.equals("asc")) {
+        } else if (buscarOptional.isPresent() && ordenarOptional.isPresent() && ordenarOptional.get().equals("asc")) {
             listaCategorias = this.categoriaRepository.findByNombreContainingIgnoreCaseOrderByNombreAsc(buscarOptional.get());
-        } else if (buscarOptional.isPresent() && ordenarOptional.isPresent() && ordenarOptional.equals("desc")) {
+        } else if (buscarOptional.isPresent() && ordenarOptional.isPresent() && ordenarOptional.get().equals("desc")) {
             listaCategorias = this.categoriaRepository.findByNombreContainingIgnoreCaseOrderByNombreDesc(buscarOptional.get());
-        } else if (buscarOptional.isEmpty() && ordenarOptional.isPresent() && ordenarOptional.equals("asc")) {
-            listaCategorias = this.categoriaRepository.findAllOrderByNombreAsc();
-        } else if (buscarOptional.isEmpty() && ordenarOptional.isPresent() && ordenarOptional.equals("desc")) {
-            listaCategorias = this.categoriaRepository.findAllOrderByNombreDesc();
+        } else if (buscarOptional.isEmpty() && ordenarOptional.isPresent() && ordenarOptional.get().equals("desc")) {
+            listaCategorias = this.categoriaRepository.findAllByOrderByNombreDesc();
+        } else if (buscarOptional.isEmpty() && ordenarOptional.isPresent() && ordenarOptional.get().equals("asc")) {
+            listaCategorias = this.categoriaRepository.findAllByOrderByNombreAsc();
+        } else {
+            //listaCategorias = this.categoriaRepository.findAll();
         }
         return listaCategorias;
     }
@@ -60,5 +62,9 @@ public class CategoriaService {
         this.categoriaRepository.findById(id).map(p -> {this.categoriaRepository.delete(p);
                     return p;})
                 .orElseThrow(() -> new CategoriaNotFoundException(id));
+    }
+
+    public List<Categoria> conteo() {
+        return this.categoriaRepository.findAll();
     }
 }

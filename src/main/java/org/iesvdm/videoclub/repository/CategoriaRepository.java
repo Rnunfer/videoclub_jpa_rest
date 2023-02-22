@@ -15,9 +15,9 @@ public interface CategoriaRepository extends JpaRepository<Categoria,Long> {
 
     public List<Categoria> findByNombreContainingIgnoreCaseOrderByNombreDesc(String nombre);
 
-    public List<Categoria> findAllOrderByNombreAsc();
+    public List<Categoria> findAllByOrderByNombreAsc();
 
-    public List<Categoria> findAllOrderByNombreDesc();
+    public List<Categoria> findAllByOrderByNombreDesc();
 
 
 }
