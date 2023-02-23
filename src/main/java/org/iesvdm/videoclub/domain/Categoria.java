@@ -16,17 +16,17 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(of = "idCategoria")
 public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria")
-    private long id;
+    private long idCategoria;
     private String nombre;
 
     @ManyToMany(
-            mappedBy = "categorias")
+            mappedBy = "categorias", fetch = FetchType.EAGER)
     @JsonIgnore
     Set<Pelicula> peliculas = new HashSet<>();
 
@@ -35,6 +35,6 @@ public class Categoria {
     private Date ultimaActualizacion;
 
     public Long getIdCategoria() {
-        return id;
+        return idCategoria;
     }
 }

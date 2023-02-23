@@ -2,6 +2,7 @@ package org.iesvdm.videoclub.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.iesvdm.videoclub.domain.Categoria;
+import org.iesvdm.videoclub.dto.CategoriaDTO;
 import org.iesvdm.videoclub.service.CategoriaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +45,7 @@ public class CategoriaController {
     }
 
     @GetMapping("/conteo")
-    public List<Integer> conteo() {
+    public List<CategoriaDTO> conteo() {
         return this.categoriaService.conteo();
     }
 

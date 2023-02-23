@@ -1,6 +1,7 @@
 package org.iesvdm.videoclub.service;
 
 import org.iesvdm.videoclub.domain.Categoria;
+import org.iesvdm.videoclub.dto.CategoriaDTO;
 import org.iesvdm.videoclub.exception.CategoriaNotFoundException;
 import org.iesvdm.videoclub.repository.CategoriaRepository;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Service
 public class CategoriaService {
@@ -64,7 +67,15 @@ public class CategoriaService {
                 .orElseThrow(() -> new CategoriaNotFoundException(id));
     }
 
-    public List<Integer> conteo() {
-        return this.categoriaRepository.queryCategoriaConteoPeliculas();
+    public List<CategoriaDTO> conteo() {
+        List<Categoria> listaCategorias = this.categoriaRepository.findAll();
+        List<Integer> conteoPeliculas = this.categoriaRepository.queryCategoriaConteoPeliculas();
+        return IntStream.range(0, listaCategorias.size())
+                .mapToObj(i -> new CategoriaDTO(
+                        listaCategorias.get(i).getIdCategoria(),
+                        listaCategorias.get(i).getNombre(),
+                        conteoPeliculas.get(i).intValue()
+                ))
+                .collect(Collectors.toList());
     }
 }
