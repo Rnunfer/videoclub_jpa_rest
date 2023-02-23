@@ -5,10 +5,10 @@ import org.iesvdm.videoclub.exception.PeliculaNotFoundException;
 import org.iesvdm.videoclub.repository.PeliculaRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +27,7 @@ public class PeliculaService {
     }
 
     public Map<String, Object> all(int pagina, int tamanio) {
-        PageRequest paginado = PageRequest.of(pagina, tamanio, Sort.by("idPelicula").ascending());
+        Pageable paginado = PageRequest.of(pagina, tamanio, Sort.by("idPelicula").ascending());
 
         Page<Pelicula> pageAll = this.peliculaRepository.findAll(paginado);
 
