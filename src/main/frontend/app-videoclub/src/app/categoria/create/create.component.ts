@@ -38,7 +38,7 @@ export class CreateComponent implements OnInit {
 
   creacionRapida() {
     let categoria: Categoria = {
-      id: 0,
+      idCategoria: 0,
       nombre: 'categoria_primero',
       ultimaActualizacion: ''
     };

@@ -13,7 +13,7 @@ import { Pelicula } from '../pelicula';
 export class CreateComponent {
 
   pelicula: Pelicula = {
-    id: 0,
+    idPelicula: 0,
     anyo_lanzamiento: '',
     caracteristicas_especiales: '',
     clasificacion: '',
@@ -23,8 +23,8 @@ export class CreateComponent {
     rental_rate: 0,
     replacement_cost: 0,
     titulo: '',
-    id_idioma: 0,
-    id_idioma_original: 0,
+    idioma: 0,
+    idioma_original: 0,
     ultimaActualizacion: ''
   }
   form: FormGroup =  this.fb.group({
@@ -37,8 +37,8 @@ export class CreateComponent {
     duracion_alquiler: new FormControl(),
     rental_rate: new FormControl(),
     replacement_cost: new FormControl(),
-    id_idioma: new FormControl(),
-    id_idioma_original: new FormControl(),
+    idioma: new FormControl(),
+    idioma_original: new FormControl(),
     ultimaActualizacion: new FormControl()
   });
 
@@ -66,8 +66,8 @@ export class CreateComponent {
       this.pelicula.duracion_alquiler = this.form.value.duracion_alquiler;
       this.pelicula.rental_rate = this.form.value.rental_rate;
       this.pelicula.replacement_cost = this.form.value.replacement_cost;
-      this.pelicula.id_idioma = this.form.value.id_idioma;
-      this.pelicula.id_idioma_original = this.form.value.id_idioma_original;
+      this.pelicula.idioma = this.form.value.idioma;
+      this.pelicula.idioma_original = this.form.value.idioma_original;
       this.pelicula.caracteristicas_especiales = this.form.value.caracteristicas_especiales;
       console.log(this.pelicula);
       this.peliculaService.create(this.pelicula).subscribe(res => {

@@ -36,7 +36,7 @@ public class Pelicula {
     private Date anyoLanzamiento;
 
     @ManyToOne()
-    @JoinColumn(name = "id_idioma", nullable = false)
+    @JoinColumn(name = "id_idioma")
     private Idioma idioma;
 
     @ManyToOne()

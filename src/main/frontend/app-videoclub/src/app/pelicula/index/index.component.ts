@@ -23,7 +23,7 @@ export class IndexComponent {
 
   deletePelicula(id: any){
     this.peliculaService.delete(id).subscribe(res => {
-      this.peliculas = this.peliculas.filter(cat => cat.id !== id);
+      this.peliculas = this.peliculas.filter(cat => cat.idPelicula !== id);
       console.log('Pelicula id =' + id + ' eliminada satisfactoriamente!');
     })
   }

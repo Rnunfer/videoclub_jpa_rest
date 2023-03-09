@@ -12,7 +12,7 @@ import {Categoria} from "../categoria";
 export class EditComponent implements OnInit {
 
   id: number = 0;
-  categoria: Categoria = { id: 0, nombre: "", ultimaActualizacion: "1970-01-01"};
+  categoria: Categoria = { idCategoria: 0, nombre: "", ultimaActualizacion: "1970-01-01"};
   form: FormGroup =   this.fb.group({
     nombre:  new FormControl('', [ Validators.required, Validators.pattern('^[a-zA-ZÁáÀàÉéÈèÍíÌìÓóÒòÚúÙùÑñüÜ \-\']+') ])
   });

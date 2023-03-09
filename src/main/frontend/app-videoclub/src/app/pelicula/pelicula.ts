@@ -1,6 +1,6 @@
 export interface Pelicula {
 
-  id: number;
+  idPelicula: number;
 
   anyo_lanzamiento: string;
 
@@ -20,9 +20,9 @@ export interface Pelicula {
 
   titulo: string;
 
-  id_idioma: number;
+  idioma: number;
 
-  id_idioma_original: number;
+  idioma_original: number;
 
   ultimaActualizacion: string;
 
